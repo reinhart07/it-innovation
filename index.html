@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovation Beyond Limits | Empowering Future with IT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--gradient-3);
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0) scale(1); }
+            25% { transform: translateY(-100px) translateX(50px) scale(1.2); }
+            50% { transform: translateY(-200px) translateX(-30px) scale(0.8); }
+            75% { transform: translateY(-100px) translateX(-80px) scale(1.1); }
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 1rem 5%;
+            background: rgba(15, 23, 42, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--light);
+            transition: all 0.3s ease;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            animation: slideInLeft 1s ease-out 0.2s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: slideInLeft 1s ease-out 0.4s both;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+            box-shadow: 0 10px 30px rgba(102, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: slideInRight 1s ease-out;
+        }
+
+        .tech-circle {
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 1;
+            margin: 0 auto;
+            position: relative;
+            animation: rotate 20s linear infinite;
+        }
+
+        .tech-icon {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 10px 40px rgba(102, 102, 241, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .tech-icon:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); animation-delay: 0s; }
+        .tech-icon:nth-child(2) { top: 25%; right: 0; animation-delay: 0.5s; }
+        .tech-icon:nth-child(3) { bottom: 25%; right: 0; animation-delay: 1s; }
+        .tech-icon:nth-child(4) { bottom: 0; left: 50%; transform: translateX(-50%); animation-delay: 1.5s; }
+        .tech-icon:nth-child(5) { bottom: 25%; left: 0; animation-delay: 2s; }
+        .tech-icon:nth-child(6) { top: 25%; left: 0; animation-delay: 2.5s; }
+
+        .center-orb {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: var(--gradient-3);
+            border-radius: 50%;
+            box-shadow: 0 0 100px rgba(79, 172, 254, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .features {
+            padding: 6rem 5%;
+            background: linear-gradient(180deg, var(--dark) 0%, #1e293b 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-header p {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+        }
+
+        .features-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .feature-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .feature-card-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+
+        .feature-card p {
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 2px solid var(--primary);
+            border-radius: 30px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 3rem;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+            box-shadow: 0 30px 80px rgba(99, 102, 241, 0.4);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(239, 68, 68, 0.2);
+            border: 2px solid #ef4444;
+            color: #ef4444;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: #ef4444;
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .modal-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.3);
+        }
+
+        .modal-header h2 {
+            font-size: 2.5rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .modal-body h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-body p {
+            color: #cbd5e1;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .modal-body ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .modal-body li {
+            color: #cbd5e1;
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .modal-body li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .example-box {
+            background: rgba(99, 102, 241, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+        }
+
+        .example-box h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .example-box p {
+            color: #cbd5e1;
+            margin: 0;
+        }
+
+        .example-box a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .example-box a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        .innovation {
+            padding: 6rem 5%;
+            background: var(--dark);
+        }
+
+        .innovation-grid {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .innovation-card {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .innovation-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
+        }
+
+        .innovation-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .innovation-content {
+            padding: 2rem;
+        }
+
+        .innovation-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .innovation-card p {
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .stats {
+            padding: 6rem 5%;
+            background: linear-gradient(180deg, #1e293b 0%, var(--dark) 100%);
+        }
+
+        .stats-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 800;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+        }
+
+        .cta-section {
+            padding: 6rem 5%;
+            background: var(--dark);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem;
+            background: var(--gradient-1);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .cta-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .btn-light {
+            background: white;
+            color: var(--primary);
+            padding: 1rem 3rem;
+        }
+
+        .btn-light:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+        }
+
+        footer {
+            padding: 3rem 5%;
+            background: #0a0f1a;
+            text-align: center;
+            border-top: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        footer p {
+            color: #64748b;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .modal-content::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .modal-content::-webkit-scrollbar-track {
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 10px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb {
+            background: var(--gradient-1);
+            border-radius: 10px;
+        }
+
+        @media (max-width: 820px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                background: rgba(15, 23, 42, 0.98);
+                flex-direction: column;
+                padding: 5rem 2rem;
+                transition: right 0.3s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 8px);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(8px, -8px);
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .modal-content {
+                padding: 2rem;
+            }
+
+            .modal-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .modal-header h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 390px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.75rem;
+            }
+
+            .tech-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .center-orb {
+                width: 150px;
+                height: 150px;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+            }
+
+            .modal-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation" id="bgAnimation"></div>
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">IT Innovation</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#innovation">Innovation</a></li>
+                <li><a href="#impact">Impact</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Innovation Beyond Limits</h1>
+                <p>Memberdayakan masa depan melalui teknologi informasi yang transformatif. Mari bersama membangun ekosistem digital yang berkelanjutan dan membawa dampak nyata bagi masyarakat.</p>
+                <div class="cta-buttons">
+                    <a href="#innovation" class="btn btn-primary">Jelajahi Inovasi</a>
+                    <a href="#features" class="btn btn-secondary">Pelajari Lebih Lanjut</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="tech-circle">
+                    <div class="tech-icon">🤖</div>
+                    <div class="tech-icon">☁️</div>
+                    <div class="tech-icon">🔐</div>
+                    <div class="tech-icon">📊</div>
+                    <div class="tech-icon">🌐</div>
+                    <div class="tech-icon">💡</div>
+                    <div class="center-orb"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2>Pilar Transformasi Digital</h2>
+            <p>Klik setiap card untuk mempelajari lebih dalam tentang teknologi yang memberdayakan masa depan</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card" data-feature="ai">
+                <img src="AI.jpg" alt="Artificial Intelligence" class="feature-image" onerror="this.style.display='none'">
+                <div class="feature-card-content">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Artificial Intelligence</h3>
+                    <p>Memanfaatkan kecerdasan buatan untuk otomasi cerdas dan pengambilan keputusan berbasis data.</p>
+                </div>
+            </div>
+            <div class="feature-card" data-feature="sustainable">
+                <img src="Sustainable Technology.jpg" alt="Sustainable Technology" class="feature-image" onerror="this.style.display='none'">
+                <div class="feature-card-content">
+                    <div class="feature-icon">🌱</div>
+                    <h3>Sustainable Technology</h3>
+                    <p>Solusi teknologi ramah lingkungan yang mendukung keberlanjutan untuk generasi mendatang.</p>
+                </div>
+            </div>
+            <div class="feature-card" data-feature="blockchain">
+                <img src="blockchain.jpg" alt="Blockchain & Security" class="feature-image" onerror="this.style.display='none'">
+                <div class="feature-card-content">
+                    <div class="feature-icon">🔗</div>
+                    <h3>Blockchain & Security</h3>
+                    <p>Keamanan data dan transparansi transaksi melalui teknologi blockchain terdesentralisasi.</p>
+                </div>
+            </div>
+            <div class="feature-card" data-feature="accessibility">
+                <img src="Digital Accessibility.png" alt="Digital Accessibility" class="feature-image" onerror="this.style.display='none'">
+                <div class="feature-card-content">
+                    <div class="feature-icon">📱</div>
+                    <h3>Digital Accessibility</h3>
+                    <p>Solusi digital inklusif yang mudah diakses semua kalangan, menghilangkan kesenjangan digital.</p>
+                </div>
+            </div>
+            <div class="feature-card" data-feature="iot">
+                <img src="IoT Integration.jpg" alt="IoT Integration" class="feature-image" onerror="this.style.display='none'">
+                <div class="feature-card-content">
+                    <div class="feature-icon">⚡</div>
+                    <h3>IoT Integration</h3>
+                    <p>Menghubungkan perangkat pintar untuk ekosistem yang efisien dan meningkatkan kualitas hidup.</p>
+                </div>
+            </div>
+            <div class="feature-card" data-feature="education">
+                <img src="Digital Education.jpg" alt="Digital Education" class="feature-image" onerror="this.style.display='none'">
+                <div class="feature-card-content">
+                    <div class="feature-icon">🎓</div>
+                    <h3>Digital Education</h3>
+                    <p>Transformasi pembelajaran melalui platform digital interaktif untuk akses pendidikan berkualitas.</p>
+                </div>
+            </div>
+            <div class="feature-card" data-feature="cloud">
+                <img src="Cloud Computing.png" alt="Cloud Computing" class="feature-image" onerror="this.style.display='none'">
+                <div class="feature-card-content">
+                    <div class="feature-icon">☁️</div>
+                    <h3>Cloud Computing</h3>
+                    <p>Infrastruktur cloud yang scalable dan efisien untuk mendukung pertumbuhan bisnis digital.</p>
+                </div>
+            </div>
+            <div class="feature-card" data-feature="bigdata">
+                <img src="Big Data Analytics.jpg" alt="Big Data Analytics" class="feature-image" onerror="this.style.display='none'">
+                <div class="feature-card-content">
+                    <div class="feature-icon">📊</div>
+                    <h3>Big Data Analytics</h3>
+                    <p>Menganalisis data masif untuk menghasilkan insights strategis dan keputusan yang tepat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content" id="modalContent">
+            <button class="modal-close" id="modalClose">×</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <section class="innovation" id="innovation">
+        <div class="section-header">
+            <h2>Inovasi Yang Memberdayakan</h2>
+            <p>Klik setiap card untuk melihat detail implementasi dan dampak nyata dari inovasi teknologi</p>
+        </div>
+        <div class="innovation-grid">
+            <div class="innovation-card" data-innovation="smartcity">
+                <img src="Smart City Solutions.jpg" alt="Smart City Solutions" class="innovation-image" onerror="this.style.display='none'">
+                <div class="innovation-content">
+                    <h4>Smart City Solutions</h4>
+                    <p>Membangun kota pintar dengan IoT dan AI untuk meningkatkan efisiensi layanan publik dan kualitas hidup warga.</p>
+                </div>
+            </div>
+            <div class="innovation-card" data-innovation="healthcare">
+                <img src="Healthcare Innovation.jpg" alt="Healthcare Innovation" class="innovation-image" onerror="this.style.display='none'">
+                <div class="innovation-content">
+                    <h4>Healthcare Innovation</h4>
+                    <p>Telemedicine dan sistem kesehatan digital yang mempermudah akses layanan kesehatan berkualitas.</p>
+                </div>
+            </div>
+            <div class="innovation-card" data-innovation="greentech">
+                <img src="Green Technology.jpg" alt="Green Technology" class="innovation-image" onerror="this.style.display='none'">
+                <div class="innovation-content">
+                    <h4>Green Technology</h4>
+                    <p>Solusi teknologi untuk monitoring lingkungan dan pengelolaan energi terbarukan yang efisien.</p>
+                </div>
+            </div>
+            <div class="innovation-card" data-innovation="fintech">
+                <img src="Financial Technology.jpg" alt="Financial Technology" class="innovation-image" onerror="this.style.display='none'">
+                <div class="innovation-content">
+                    <h4>Financial Technology</h4>
+                    <p>Revolusi layanan finansial digital yang inklusif, aman, dan mudah diakses untuk semua kalangan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats" id="impact">
+        <div class="section-header">
+            <h2>Dampak Nyata Teknologi</h2>
+            <p>Angka-angka yang menunjukkan transformasi positif melalui implementasi teknologi informasi</p>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">85%</div>
+                <div class="stat-label">Peningkatan Efisiensi</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">10M+</div>
+                <div class="stat-label">Pengguna Terdampak</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">40%</div>
+                <div class="stat-label">Pengurangan Biaya</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">99.9%</div>
+                <div class="stat-label">Keandalan Sistem</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Mari Berinovasi Bersama</h2>
+            <p>Bergabunglah dengan ekosistem inovasi digital dan wujudkan masa depan yang lebih cerdas dan berkelanjutan</p>
+            <button class="btn btn-light" id="contactBtn">Mulai Sekarang</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Innovation Beyond Limits. Empowering the Future with IT.</p>
+    </footer>
+
+    <script>
+        const featureData = {
+            ai: {
+                icon: '🧠',
+                title: 'Artificial Intelligence',
+                content: `<h3>Revolusi Kecerdasan Buatan</h3><p>Artificial Intelligence (AI) menghadirkan era baru dalam otomasi dan pengambilan keputusan yang cerdas. Teknologi ini memungkinkan sistem untuk belajar dari data, mengenali pola, dan membuat prediksi akurat tanpa pemrograman eksplisit.</p><h3>Manfaat Utama</h3><ul><li>Otomasi proses bisnis yang kompleks dengan tingkat akurasi hingga 95%</li><li>Analisis prediktif untuk pengambilan keputusan strategis berbasis data real-time</li><li>Personalisasi pengalaman pengguna melalui machine learning algorithms</li><li>Deteksi anomali dan fraud prevention untuk keamanan maksimal</li><li>Natural Language Processing untuk interaksi manusia-mesin yang natural</li></ul><div class="example-box"><h4>Contoh Implementasi: Chatbot AI untuk Customer Service</h4><p>Bank XYZ mengimplementasikan AI chatbot yang mampu menangani 10,000+ pertanyaan per hari dengan tingkat kepuasan 92%. Sistem ini mengurangi waktu response hingga 80% dan menghemat biaya operasional sebesar 60%.</p></div><div class="example-box"><h4>Studi Kasus: AI dalam Healthcare</h4><p>Rumah sakit menggunakan AI untuk diagnosis dini kanker dengan akurasi 98%, membantu dokter mendeteksi penyakit lebih cepat dan meningkatkan tingkat kesembuhan pasien hingga 35%.</p></div><h3>Dampak untuk Masyarakat</h3><p>AI memberdayakan masyarakat dengan menyediakan akses ke layanan pintar yang sebelumnya tidak terjangkau, meningkatkan produktivitas, dan menciptakan peluang baru di berbagai sektor industri.</p>`
+            },
+            sustainable: {
+                icon: '🌱',
+                title: 'Sustainable Technology',
+                content: `<h3>Teknologi Ramah Lingkungan</h3><p>Sustainable Technology berfokus pada pengembangan solusi digital yang meminimalkan dampak lingkungan sambil memaksimalkan efisiensi dan keberlanjutan untuk generasi masa depan.</p><h3>Prinsip Utama</h3><ul><li>Green Computing dengan data center bertenaga energi terbarukan</li><li>Optimalisasi konsumsi energi melalui algoritma intelligent power management</li><li>Circular economy dalam lifecycle perangkat teknologi</li><li>Carbon footprint tracking dan reduction strategies</li><li>E-waste management dan recycling programs</li></ul><div class="example-box"><h4>Implementasi: Smart Energy Management System</h4><p>Sistem IoT untuk monitoring dan optimalisasi penggunaan energi di gedung perkantoran, mengurangi konsumsi listrik hingga 40% dan emisi CO2 sebesar 1,200 ton per tahun.</p></div><div class="example-box"><h4>Studi Kasus: Green Data Center</h4><p>Data center dengan cooling system AI-powered dan solar panels menghemat energi 50%, mengurangi biaya operasional $2 juta per tahun, dan menurunkan carbon footprint hingga 70%.</p></div><h3>Kontribusi Global</h3><p>Teknologi berkelanjutan membantu mencapai UN Sustainable Development Goals, khususnya dalam aksi iklim, energi bersih, dan konsumsi yang bertanggung jawab.</p>`
+            },
+            blockchain: {
+                icon: '🔗',
+                title: 'Blockchain & Security',
+                content: `<h3>Keamanan Terdesentralisasi</h3><p>Blockchain revolutionizes data security dengan distributed ledger technology yang transparan, immutable, dan terdesentralisasi, memberikan trust dalam transaksi digital.</p><h3>Keunggulan Blockchain</h3><ul><li>Transparansi penuh dengan audit trail yang tidak dapat dimanipulasi</li><li>Keamanan kriptografi tingkat enterprise untuk proteksi data sensitif</li><li>Smart contracts untuk otomasi transaksi tanpa intermediary</li><li>Traceability lengkap untuk supply chain management</li><li>Decentralized identity management untuk privasi maksimal</li></ul><div class="example-box"><h4>Implementasi: Supply Chain Transparency</h4><p>Perusahaan retail menggunakan blockchain untuk tracking produk dari manufaktur hingga konsumen, meningkatkan kepercayaan pelanggan 85% dan mengurangi produk palsu hingga 99%.</p></div><div class="example-box"><h4>Studi Kasus: Healthcare Records</h4><p>Sistem blockchain untuk medical records memberikan akses aman bagi pasien dan dokter, mengurangi duplikasi tes hingga 30% dan menghemat biaya healthcare sebesar $150 juta per tahun.</p></div><h3>Masa Depan Digital</h3><p>Blockchain memberdayakan masyarakat dengan kontrol penuh atas data mereka, menciptakan ekosistem digital yang lebih aman, transparan, dan dapat dipercaya.</p>`
+            },
+            accessibility: {
+                icon: '📱',
+                title: 'Digital Accessibility',
+                content: `<h3>Teknologi untuk Semua</h3><p>Digital Accessibility memastikan bahwa setiap individu, terlepas dari kemampuan fisik atau kondisi ekonomi, dapat mengakses dan memanfaatkan teknologi digital untuk meningkatkan kualitas hidup.</p><h3>Fokus Utama</h3><ul><li>Universal Design untuk antarmuka yang inklusif dan user-friendly</li><li>Assistive technology untuk penyandang disabilitas</li><li>Multi-language support untuk komunitas global</li><li>Affordable technology solutions untuk ekonomi menengah ke bawah</li><li>Digital literacy programs untuk meningkatkan kompetensi digital</li></ul><div class="example-box"><h4>Implementasi: Voice-Controlled Apps</h4><p>Aplikasi banking dengan voice control membantu 50,000+ pengguna tunanetra mengakses layanan finansial secara mandiri, meningkatkan financial inclusion hingga 70%.</p></div><div class="example-box"><h4>Studi Kasus: Rural Internet Access</h4><p>Program internet murah di daerah terpencil menghubungkan 500+ desa, memberikan akses pendidikan online bagi 200,000+ siswa dan meningkatkan ekonomi lokal hingga 45%.</p></div><h3>Menghapus Kesenjangan Digital</h3><p>Aksesibilitas digital menciptakan equal opportunity, memberdayakan kelompok marjinal, dan memastikan teknologi menjadi alat pembebasan, bukan pembatas.</p>`
+            },
+            iot: {
+                icon: '⚡',
+                title: 'IoT Integration',
+                content: `<h3>Ekosistem Perangkat Terhubung</h3><p>Internet of Things (IoT) menghubungkan miliaran perangkat untuk menciptakan ekosistem pintar yang meningkatkan efisiensi, kenyamanan, dan kualitas hidup melalui data real-time dan automasi.</p><h3>Aplikasi IoT</h3><ul><li>Smart home automation untuk kontrol lingkungan yang optimal</li><li>Industrial IoT untuk predictive maintenance dan optimalisasi produksi</li><li>Smart agriculture dengan precision farming techniques</li><li>Connected vehicles untuk transportation yang lebih aman</li><li>Wearable health devices untuk monitoring kesehatan real-time</li></ul><div class="example-box"><h4>Implementasi: Smart Building Management</h4><p>Gedung perkantoran dengan 5,000+ sensor IoT mengoptimalkan HVAC, lighting, dan security, menghemat energi 35%, mengurangi biaya operasional $800,000 per tahun, dan meningkatkan kenyamanan karyawan.</p></div><div class="example-box"><h4>Studi Kasus: Smart Farming</h4><p>Petani menggunakan IoT sensors untuk monitoring kelembaban tanah, cuaca, dan kesehatan tanaman, meningkatkan hasil panen 50%, menghemat air 40%, dan mengurangi pestisida 60%.</p></div><h3>Transformasi Kehidupan Sehari-hari</h3><p>IoT memberdayakan individu dan bisnis dengan insights berbasis data untuk keputusan yang lebih cerdas, efisiensi yang lebih tinggi, dan kehidupan yang lebih nyaman.</p>`
+            },
+            education: {
+                icon: '🎓',
+                title: 'Digital Education',
+                content: `<h3>Transformasi Pembelajaran Digital</h3><p>Digital Education merevolusi cara kita belajar dan mengajar dengan memanfaatkan teknologi untuk menciptakan pengalaman pembelajaran yang interaktif, personal, dan dapat diakses dari mana saja.</p><h3>Inovasi Pendidikan</h3><ul><li>E-learning platforms dengan konten multimedia interaktif</li><li>Adaptive learning yang menyesuaikan dengan kecepatan siswa</li><li>Virtual reality untuk pengalaman pembelajaran immersive</li><li>Gamification untuk meningkatkan engagement dan motivasi</li><li>AI-powered tutoring systems untuk bantuan personal 24/7</li></ul><div class="example-box"><h4>Implementasi: Online Learning Platform</h4><p>Platform e-learning nasional melayani 5 juta siswa dengan 50,000+ kursus, meningkatkan akses pendidikan di daerah terpencil 300%, dan membantu 2 juta+ orang meningkatkan skill untuk pekerjaan baru.</p></div><div class="example-box"><h4>Studi Kasus: VR in Medical Education</h4><p>Universitas kedokteran menggunakan VR simulation untuk training bedah, meningkatkan skill mahasiswa 60% lebih cepat, mengurangi biaya training 70%, dan meningkatkan keamanan pasien.</p></div><h3>Demokratisasi Pendidikan</h3><p>Teknologi pendidikan digital menghilangkan batasan geografis dan ekonomi, memberikan akses pendidikan berkualitas untuk semua, dan menciptakan lifelong learning opportunities.</p>`
+            },
+            cloud: {
+                icon: '☁️',
+                title: 'Cloud Computing',
+                content: `<h3>Infrastruktur Digital Masa Depan</h3><p>Cloud Computing menyediakan akses on-demand ke sumber daya komputasi yang scalable, flexible, dan cost-effective, memungkinkan bisnis dari semua ukuran untuk berinovasi tanpa investasi infrastruktur besar.</p><h3>Keuntungan Cloud</h3><ul><li>Scalability instant untuk menangani pertumbuhan bisnis yang cepat</li><li>Cost optimization dengan pay-as-you-go pricing model</li><li>Global accessibility untuk kolaborasi tim worldwide</li><li>Automatic backup dan disaster recovery untuk business continuity</li><li>Rapid deployment untuk faster time-to-market</li></ul><div class="example-box"><h4>Implementasi: E-Commerce Cloud Migration</h4><p>Startup e-commerce migrate ke cloud, menangani traffic spike 1000% saat flash sale tanpa downtime, mengurangi infrastructure cost 60%, dan meningkatkan uptime menjadi 99.99%.</p></div><div class="example-box"><h4>Studi Kasus: Government Cloud Services</h4><p>Pemerintah mengimplementasikan cloud untuk 200+ layanan publik, melayani 50 juta+ citizens, mengurangi biaya IT 40%, dan meningkatkan kecepatan layanan dari hari menjadi menit.</p></div><h3>Akselerasi Transformasi Digital</h3><p>Cloud computing memberdayakan organisasi untuk fokus pada inovasi daripada maintenance infrastruktur, mempercepat digital transformation, dan meningkatkan competitiveness.</p>`
+            },
+            bigdata: {
+                icon: '📊',
+                title: 'Big Data Analytics',
+                content: `<h3>Kekuatan Data untuk Keputusan Cerdas</h3><p>Big Data Analytics mengubah data masif menjadi insights berharga yang mendorong keputusan strategis, mengungkap peluang baru, dan menciptakan competitive advantage di era digital.</p><h3>Kemampuan Analytics</h3><ul><li>Real-time analytics untuk respons cepat terhadap perubahan market</li><li>Predictive modeling untuk forecasting trends dan behavior</li><li>Customer segmentation untuk personalized marketing strategies</li><li>Operational optimization untuk efisiensi maksimal</li><li>Risk analysis dan fraud detection untuk security enhancement</li></ul><div class="example-box"><h4>Implementasi: Retail Customer Analytics</h4><p>Chain retail menganalisis 100 juta+ transaksi untuk personalized recommendations, meningkatkan conversion rate 45%, customer lifetime value 60%, dan revenue $50 juta per tahun.</p></div><div class="example-box"><h4>Studi Kasus: Smart City Traffic Management</h4><p>Kota menggunakan big data dari 10,000+ sensors untuk optimalisasi traffic flow, mengurangi kemacetan 35%, waktu perjalanan 25%, dan emisi kendaraan 20%.</p></div><h3>Data-Driven Decision Making</h3><p>Big data analytics memberdayakan organisasi untuk membuat keputusan berbasis fakta, bukan intuisi, meningkatkan akurasi strategi, dan mencapai hasil yang terukur dan sustainable.</p>`
+            }
+        };
+
+        const innovationData = {
+            smartcity: {
+                icon: '🏙️',
+                title: 'Smart City Solutions',
+                content: `<h3>Kota Pintar untuk Masa Depan</h3><p>Smart City Solutions mengintegrasikan teknologi IoT, AI, dan Big Data untuk menciptakan infrastruktur urban yang efisien, sustainable, dan meningkatkan kualitas hidup warga secara signifikan.</p><h3>Komponen Utama</h3><ul><li>Smart Transportation dengan traffic management system real-time</li><li>Intelligent Energy Grid untuk distribusi listrik yang optimal</li><li>Smart Waste Management dengan automated collection systems</li><li>Public Safety dengan surveillance AI dan emergency response</li><li>Citizen Engagement Platform untuk partisipasi aktif masyarakat</li></ul><div class="example-box"><h4>Implementasi: Jakarta Smart City</h4><p>Program smart city di Jakarta mengintegrasikan 15,000+ CCTV dengan AI untuk traffic monitoring, mengurangi kemacetan 28%, response time emergency 40%, dan meningkatkan kepuasan warga hingga 75%.</p></div><div class="example-box"><h4>Studi Kasus: Smart Parking System</h4><p>Sistem parkir pintar dengan sensor IoT di 500+ lokasi mengurangi waktu mencari parkir 60%, emisi CO2 dari kendaraan 25%, dan meningkatkan revenue parkir sebesar $5 juta per tahun.</p></div><h3>Dampak Transformatif</h3><p>Smart city memberdayakan pemerintah untuk memberikan layanan publik yang lebih efisien, meningkatkan sustainability, dan menciptakan lingkungan urban yang lebih livable untuk semua warga.</p>`
+            },
+            healthcare: {
+                icon: '🏥',
+                title: 'Healthcare Innovation',
+                content: `<h3>Revolusi Layanan Kesehatan Digital</h3><p>Healthcare Innovation memanfaatkan teknologi untuk meningkatkan akses, kualitas, dan efisiensi layanan kesehatan, menciptakan sistem healthcare yang lebih patient-centric dan cost-effective.</p><h3>Inovasi Kesehatan</h3><ul><li>Telemedicine untuk konsultasi medis jarak jauh 24/7</li><li>AI-powered diagnostic tools untuk deteksi dini penyakit</li><li>Electronic Health Records untuk medical history terintegrasi</li><li>Wearable health devices untuk continuous monitoring</li><li>Robotic surgery untuk presisi operasi maksimal</li></ul><div class="example-box"><h4>Implementasi: National Telemedicine Platform</h4><p>Platform telemedicine nasional melayani 3 juta+ konsultasi per tahun, menghubungkan 10,000+ dokter dengan pasien di daerah terpencil, mengurangi biaya healthcare 45%, dan meningkatkan akses kesehatan 300%.</p></div><div class="example-box"><h4>Studi Kasus: AI Cancer Detection</h4><p>Sistem AI untuk screening kanker payudara mencapai akurasi 97%, mendeteksi 15% lebih banyak kasus dibanding metode tradisional, dan menyelamatkan 5,000+ nyawa per tahun melalui early detection.</p></div><h3>Kesehatan untuk Semua</h3><p>Inovasi healthcare digital mendemokratisasi akses ke layanan kesehatan berkualitas, mengurangi disparitas, dan memberdayakan pasien untuk mengambil kontrol atas kesehatan mereka.</p>`
+            },
+            greentech: {
+                icon: '🌿',
+                title: 'Green Technology',
+                content: `<h3>Teknologi untuk Planet yang Lebih Hijau</h3><p>Green Technology menggunakan inovasi digital untuk monitoring, protecting, dan restoring lingkungan, menciptakan solusi sustainable yang memerangi climate change dan melestarikan resources alam.</p><h3>Solusi Hijau</h3><ul><li>Environmental monitoring dengan sensor network real-time</li><li>Renewable energy optimization menggunakan AI</li><li>Carbon footprint tracking dan offset programs</li><li>Smart recycling systems dengan automated sorting</li><li>Precision agriculture untuk sustainable farming</li></ul><div class="example-box"><h4>Implementasi: Smart Grid Renewable Energy</h4><p>Smart grid mengintegrasikan solar dan wind power untuk 500,000+ rumah, mengurangi ketergantungan fossil fuel 60%, menurunkan emisi CO2 sebesar 2 juta ton per tahun, dan menghemat biaya energi 35%.</p></div><div class="example-box"><h4>Studi Kasus: Ocean Cleanup Technology</h4><p>Sistem monitoring ocean plastic menggunakan satellite imagery dan AI mengidentifikasi 85% plastic accumulation zones, membantu cleanup operations mengumpulkan 10,000+ ton plastic waste dalam 2 tahun.</p></div><h3>Masa Depan Berkelanjutan</h3><p>Green technology memberdayakan kita untuk melindungi planet sambil mendorong pertumbuhan ekonomi, menciptakan balance antara progress dan preservation untuk generasi mendatang.</p>`
+            },
+            fintech: {
+                icon: '💳',
+                title: 'Financial Technology',
+                content: `<h3>Revolusi Layanan Finansial Digital</h3><p>Financial Technology (Fintech) mentransformasi industri keuangan dengan solusi digital yang inklusif, efisien, dan aman, memberikan akses layanan finansial ke jutaan unbanked population.</p><h3>Inovasi Fintech</h3><ul><li>Mobile banking untuk akses finansial 24/7 dari anywhere</li><li>Digital payments dengan e-wallets dan QR code</li><li>Peer-to-peer lending platform untuk akses kredit mudah</li><li>Robo-advisors untuk investment management otomatis</li><li>Blockchain-based remittance untuk transfer internasional murah</li></ul><div class="example-box"><h4>Implementasi: Digital Wallet National Scale</h4><p>E-wallet nasional dengan 80 juta+ users memproses 2 miliar transaksi per tahun senilai $50 miliar, meningkatkan financial inclusion 65%, mengurangi cash dependency 40%, dan memberdayakan 5 juta+ UMKM.</p></div><div class="example-box"><h4>Studi Kasus: Micro-lending Platform</h4><p>Platform P2P lending menyalurkan kredit ke 500,000+ micro-entrepreneurs yang tidak bankable, dengan approval rate 90%, bunga kompetitif, dan NPL hanya 2%, mendorong pertumbuhan ekonomi grassroots sebesar $2 miliar.</p></div><h3>Inklusi Finansial untuk Semua</h3><p>Fintech memberdayakan individuals dan SMEs dengan akses ke layanan finansial yang sebelumnya sulit dijangkau, mendorong entrepreneurship, dan accelerating economic growth yang inklusif.</p>`
+            }
+        };
+
+        const bgAnimation = document.getElementById('bgAnimation');
+        for (let i = 0; i < 15; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.width = Math.random() * 100 + 50 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDuration = Math.random() * 10 + 15 + 's';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            bgAnimation.appendChild(particle);
+        }
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalBody = document.getElementById('modalBody');
+        const modalClose = document.getElementById('modalClose');
+
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const featureKey = card.getAttribute('data-feature');
+                const data = featureData[featureKey];
+                
+                modalBody.innerHTML = `
+                    <div class="modal-header">
+                        <div class="modal-icon">${data.icon}</div>
+                        <h2>${data.title}</h2>
+                    </div>
+                    <div class="modal-body">
+                        ${data.content}
+                    </div>
+                `;
+                
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        document.querySelectorAll('.innovation-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const innovationKey = card.getAttribute('data-innovation');
+                const data = innovationData[innovationKey];
+                
+                modalBody.innerHTML = `
+                    <div class="modal-header">
+                        <div class="modal-icon">${data.icon}</div>
+                        <h2>${data.title}</h2>
+                    </div>
+                    <div class="modal-body">
+                        ${data.content}
+                    </div>
+                `;
+                
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        const contactBtn = document.getElementById('contactBtn');
+        contactBtn.addEventListener('click', () => {
+            modalBody.innerHTML = `
+                <div class="modal-header">
+                    <div class="modal-icon">📧</div>
+                    <h2>Mari Berkolaborasi</h2>
+                </div>
+                <div class="modal-body">
+                    <h3>Hubungi Kami</h3>
+                    <p>Tertarik untuk memulai transformasi digital bersama kami? Kami siap membantu mewujudkan visi inovasi Anda.</p>
+                    
+                    <div class="example-box" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2)); border-left: 4px solid var(--primary); text-align: center;">
+                        <h4>📬 Email Kontak</h4>
+                        <p style="font-size: 1.3rem; font-weight: 600; color: var(--primary); margin-top: 1rem;">
+                            <a href="mailto:reinhartrobert23@gmail.com" style="color: var(--primary); text-decoration: none;">
+                                reinhartrobert23@gmail.com
+                            </a>
+                        </p>
+                    </div>
+
+                    <h3 style="margin-top: 2rem;">Apa yang Bisa Kami Bantu?</h3>
+                    <ul>
+                        <li>Konsultasi strategi transformasi digital untuk bisnis Anda</li>
+                        <li>Implementasi solusi teknologi custom sesuai kebutuhan</li>
+                        <li>Training dan workshop untuk tim internal</li>
+                        <li>Partnership untuk proyek inovasi berkelanjutan</li>
+                        <li>Support teknis dan maintenance sistem</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <h4>⚡ Respons Cepat</h4>
+                        <p>Tim kami akan merespons email Anda dalam waktu maksimal 24 jam kerja. Ceritakan kebutuhan Anda, dan mari kita wujudkan bersama!</p>
+                    </div>
+
+                    <p style="margin-top: 2rem; text-align: center; font-style: italic; color: #94a3b8;">
+                        "Inovasi dimulai dari satu langkah komunikasi. Mari kita ciptakan masa depan digital yang lebih baik bersama-sama."
+                    </p>
+                </div>
+            `;
+            
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        modalClose.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .innovation-card, .stat-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease-out';
+            observer.observe(card);
+        });
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumber = entry.target.querySelector('.stat-number');
+                    const text = statNumber.textContent;
+                    
+                    if (text.includes('%')) {
+                        const num = parseInt(text);
+                        let current = 0;
+                        const timer = setInterval(() => {
+                            current += 1;
+                            if (current >= num) {
+                                statNumber.textContent = num + '%';
+                                clearInterval(timer);
+                            } else {
+                                statNumber.textContent = current + '%';
+                            }
+                        }, 20);
+                    } else if (text.includes('M+')) {
+                        const num = parseInt(text);
+                        let current = 0;
+                        const timer = setInterval(() => {
+                            current += 0.2;
+                            if (current >= num) {
+                                statNumber.textContent = num + 'M+';
+                                clearInterval(timer);
+                            } else {
+                                statNumber.textContent = current.toFixed(1) + 'M+';
+                            }
+                        }, 30);
+                    } else {
+                        const num = parseFloat(text);
+                        let current = 0;
+                        const timer = setInterval(() => {
+                            current += 0.1;
+                            if (current >= num) {
+                                statNumber.textContent = num + '%';
+                                clearInterval(timer);
+                            } else {
+                                statNumber.textContent = current.toFixed(1) + '%';
+                            }
+                        }, 20);
+                    }
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stat-card').forEach(card => {
+            statsObserver.observe(card);
+        });
+
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero-visual');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        const techIcons = document.querySelectorAll('.tech-icon');
+        techIcons.forEach((icon) => {
+            icon.addEventListener('mouseenter', () => {
+                icon.style.transform = 'scale(1.2) rotate(10deg)';
+                icon.style.transition = 'all 0.3s ease';
+            });
+            icon.addEventListener('mouseleave', () => {
+                icon.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+
+        const featureCards = document.querySelectorAll('.feature-card');
+        featureCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.background = 'rgba(99, 102, 241, 0.1)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.background = 'rgba(30, 41, 59, 0.5)';
+            });
+        });
+
+        document.querySelectorAll('.feature-card, .innovation-card').forEach(card => {
+            card.style.cursor = 'pointer';
+            card.title = 'Klik untuk melihat detail';
+        });
+    </script>
+</body>
+</html>
